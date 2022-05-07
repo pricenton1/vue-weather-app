@@ -31,10 +31,19 @@
 </template>
 
 <script>
+import getWeather from "../services/DataServices";
+
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  created(){
+    getWeather("Jakarta")
+    .then((response)=>{
+      console.log(response.data)
+    })
   }
 }
 </script>
