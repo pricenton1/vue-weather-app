@@ -1,5 +1,15 @@
 # vue-weather-app
 
+## Deployment Project
+```
+https://www.heroku.com/
+```
+
+## Demo Project
+```
+https://weather-app-tonykuy.herokuapp.com/
+```
+
 ## Project setup
 ```
 npm install
