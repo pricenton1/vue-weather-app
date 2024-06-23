@@ -1,6 +1,16 @@
 import axios from "axios";
 
-const apiKey = process.env.VUE_APP_API_KEY_WEATHER; 
+const apiKey = process.env.VUE_APP_API_KEY_WEATHER;
+
+export const APIForecast = axios.create({
+    baseURL : process.env.VUE_APP_BASE_URL_FORECAST,
+    params:{
+        q : String,
+        units: 'metric',
+        appid : apiKey
+    }
+})
+
 export const APIData = axios.create({
     baseURL: process.env.VUE_APP_BASE_URL_WEATHER,
     params:{
@@ -8,7 +18,6 @@ export const APIData = axios.create({
         appid: apiKey
     },  
 })
-
 
 const apiKeyCity = process.env.VUE_APP_API_KEY_CITY
 export const APICity = axios.create({

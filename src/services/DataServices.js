@@ -1,5 +1,12 @@
 import * as httpCommon from "./http-common";
 
+export const GetWeatherForecast = async (city) => {
+    return await httpCommon.APIForecast.get("",{
+        params : {
+            q : city
+        }
+    })
+}
 
 export const GetWeather = async (city) => {
     return await httpCommon.APIData.get("",{

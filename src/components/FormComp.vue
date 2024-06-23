@@ -63,6 +63,7 @@ export default {
     },
     findCity() {
       this.$store.dispatch("fetchData", this.selectedCity.name);
+      this.$store.dispatch("fetchListWeatherForecast",this.selectedCity.name)
       this.selectedCity = "";
     },
   },
