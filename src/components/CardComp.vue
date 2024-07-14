@@ -63,13 +63,17 @@ export default {
   data() {
     return {
       city: this.$store.state.dataWeather.name,
-      listForecast: this.$store.state.listWeatherForecast,
+      // listForecast: this.$store.getters.getListWeatherForecast,
     }
   },
   methods: {
   
   },
   computed: {
+    // get data list weather forecast 5 days 
+    listForecast(){
+      return this.$store.getters.getListWeatherForecast
+    },
     // get data weather from store vuex
     dataWeather() {
       return this.$store.getters.getData;
