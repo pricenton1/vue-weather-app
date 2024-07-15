@@ -2,12 +2,12 @@
 
 ## Deployment Project
 ```
-https://www.heroku.com/
+https://www.vercel.com/
 ```
 
 ## Demo Project
 ```
-https://weather-app-tonykuy.herokuapp.com/
+https://weather-app-tonykuy.vercel.app/
 ```
 
 ## Project setup
