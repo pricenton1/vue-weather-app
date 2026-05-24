@@ -27,7 +27,7 @@
           :class="selectedCity==='' ? 'btn-disabled' : 'btn-active'"
           type="submit"
           :disabled="selectedCity===''"
-          @click.prevent="findCity"
+          @click.prevent="findWeather"
         >
           Search
         </button>
@@ -59,16 +59,16 @@ export default {
     search(loading, search) {
       this.$store.dispatch("fetchCities", search);
       loading(false);
-      
     },
-    findCity() {
-      this.$store.dispatch("fetchData", this.selectedCity.name);
+    findWeather() {
+      this.$store.dispatch("fetchData", this.selectedCity);
       this.selectedCity = "";
     },
   },
   computed: {
     getCities() {
-      return this.$store.getters.getCities;
+      const cities = this.$store.getters.getCities;
+      return cities.slice(0,5)
     },
   },
 };

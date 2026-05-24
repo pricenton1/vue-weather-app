@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import * as service from "../services/DataServices";
+import { listCity } from "./constan";
 import Swal from "sweetalert2";
 
 Vue.use(Vuex);
@@ -8,14 +9,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     dataWeather: {},
-    cities: [],
+    cities: listCity,
+    displayCity : [],
   },
   getters: {
     getData(state) {
       return state.dataWeather;
     },
     getCities(state) {
-      return state.cities;
+      return state.displayCity;
     },
   },
   actions: {
@@ -65,14 +67,17 @@ export default new Vuex.Store({
         });
     },
     fetchCities({ commit }, cityName) {
-      service
-        .GetCities(cityName)
-        .then((response) => {
-          commit("SET_CITIES", response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    //   service
+    //     .GetCities(cityName)
+    //     .then((response) => {
+    //       commit("SET_CITIES", response.data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+      const cities = this.state.cities
+      const newCities =  cities.filter(city => city.toLowerCase().includes(cityName));
+      commit("SET_CITIES", newCities);
     },
   },
   mutations: {
@@ -80,7 +85,7 @@ export default new Vuex.Store({
       state.dataWeather = dataWeather;
     },
     SET_CITIES(state, cities) {
-      state.cities = cities;
+      state.displayCity = cities;
     },
   },
 });
