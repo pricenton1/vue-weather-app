@@ -44,6 +44,16 @@
           </p>  
         </div>
       </div>
+
+    </div>
+    <!-- forecast 5 days -->
+    <div class="flex flex-col md:flex-row justify-around w-full h-max p-2">
+      <div class="flex flex-col items-center md:basis-1/5 md:mb-1" v-for="(value, index) in listForecast" :key="index">
+        <p class="font-bold">{{ value.dt_txt }}</p>
+        <img class="w-16 sm:w-12 xl:w-24" :src="`http://openweathermap.org/img/w/${value.weather[0].icon}.png`" alt="iconWeather2">
+        <p>{{ value.weather[0].description }}</p>
+        <p>{{ Math.round(value.main.temp) }}<span>&#176;</span>C</p>
+      </div>
     </div>
   </div>
 </template>
@@ -52,24 +62,34 @@
 
 export default {
   name: "CardComp",
-  data(){
-    return{
-        city: this.$store.state.dataWeather.name,
+  data() {
+    return {
+      city: this.$store.state.dataWeather.name,
+      // listForecast: this.$store.getters.getListWeatherForecast,
     }
   },
-  methods:{
+  methods: {
+  
   },
   computed: {
+    // get data list weather forecast 5 days 
+    listForecast(){
+      return this.$store.getters.getListWeatherForecast
+    },
+    // get data weather from store vuex
     dataWeather() {
       return this.$store.getters.getData;
     },
-    tempCelcius(){
+    tempCelcius() {
       return Math.round(this.dataWeather.main.temp - 273.15)
     },
   },
-  created(){
-   
+  created() {
+
   },
+  mounted(){
+    // this.dataListWeather();
+  }
 };
 </script>
 
