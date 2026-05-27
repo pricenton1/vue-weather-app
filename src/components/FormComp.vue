@@ -10,6 +10,7 @@
           :options="getCities" 
           label="name" 
           :filterable="false"
+          :append-to-body="true"
         >
           <template #no-options>type to search for weather..</template>
 
@@ -76,9 +77,12 @@ export default {
   @apply w-3/4 h-12 mr-2 inline-block;
 }
 
-.vselect .vs__search::placeholder,
+.vselect .vs__search::placeholder {
+  @apply w-auto; /* Tetap auto untuk placeholder jika mau */
+}
+
 .vselect .vs__dropdown-toggle {
-  @apply w-auto h-12 border-2 rounded-md text-neutral-400 bg-slate-50;
+  @apply w-full h-12 border-2 rounded-md text-neutral-400 bg-slate-50; /* Ganti ke w-full */
 }
 
 .vselect .vs__search::placeholder,
