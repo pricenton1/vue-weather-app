@@ -2,33 +2,30 @@
   <div class="container-xl mx-auto">
     <div class="block max-w-lg rounded-lg mx-auto">
       <form class="mx-auto flex">
-        <v-select
-          class="vselect"
-          placeholder="Search for city"
-          v-model="selectedCity"
+        <v-select 
+          class="vselect" 
+          placeholder="Search for city" 
+          v-model="selectedCity" 
           @search="onSearch"
-          :options="getCities"
-          label="name"
+          :options="getCities" 
+          label="name" 
           :filterable="false"
         >
-          <template slot="no-options">type to search for weather..</template>
-          <template slot="option" slot-scope="option">
-            <div class="d-center">{{ option.name }}</div>
+          <template #no-options>type to search for weather..</template>
+
+          <template #option="option">
+            <div class="d-center text-slate-800">{{ option.name }}</div>
           </template>
-          <template slot="selected-option" slot-scope="option">
-            <div class="d-center">
-              <div class="d-center">{{ option.name }}</div>
+
+          <template #selected-option="option">
+            <div class="d-center text-slate-800">
+              <div class="d-center text-slate-800">{{ option.name }}</div>
             </div>
           </template>
         </v-select>
 
-        <button
-          class="submit bg-slate-50"
-          :class="selectedCity==='' ? 'btn-disabled' : 'btn-active'"
-          type="submit"
-          :disabled="selectedCity===''"
-          @click.prevent="findWeather"
-        >
+        <button class="submit bg-slate-50" :class="selectedCity === '' ? 'btn-disabled' : 'btn-active'" type="submit"
+          :disabled="selectedCity === ''" @click.prevent="findWeather">
           Search
         </button>
       </form>
@@ -46,7 +43,7 @@ export default {
   data() {
     return {
       selectedCity: "",
-      disabled:true,
+      disabled: true,
     };
   },
   methods: {
@@ -68,7 +65,7 @@ export default {
   computed: {
     getCities() {
       const cities = this.$store.getters.getCities;
-      return cities.slice(0,5)
+      return cities.slice(0, 5)
     },
   },
 };
@@ -76,8 +73,9 @@ export default {
 
 <style lang="postcss">
 .vselect {
-  @apply w-3/4 h-12 mr-2 inline-block  ;
+  @apply w-3/4 h-12 mr-2 inline-block;
 }
+
 .vselect .vs__search::placeholder,
 .vselect .vs__dropdown-toggle {
   @apply w-auto h-12 border-2 rounded-md text-neutral-400 bg-slate-50;
@@ -91,15 +89,14 @@ export default {
 }
 
 .btn-disabled {
-  @apply w-24 h-12 rounded-md border-solid border-2 text-gray-300 ;
+  @apply w-24 h-12 rounded-md border-solid border-2 text-gray-300;
 }
 
 .btn-active {
   @apply w-24 h-12 rounded-md border-solid border-2 border-cyan-500 text-gray-900;
 }
 
-.btn-active:hover{
+.btn-active:hover {
   @apply bg-teal-50 shadow-2xl shadow-cyan-500/50;
 }
-
 </style>
