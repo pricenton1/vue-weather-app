@@ -51,7 +51,7 @@ export default {
     onSearch(search, loading) {
       if (search.length) {
         loading(true);
-        this.search(loading, search, this);
+        this.search(loading, search);
       }
     },
     search(loading, search) {

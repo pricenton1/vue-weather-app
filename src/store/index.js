@@ -116,7 +116,7 @@ export default new Vuex.Store({
     //       console.log(err);
     //     });
       const cities = this.state.cities
-      const newCities =  cities.filter(city => city.toLowerCase().includes(cityName));
+      const newCities = cities.filter(city => city.toLowerCase().includes(cityName.toLowerCase()));
       commit("SET_CITIES", newCities);
     },
   },
